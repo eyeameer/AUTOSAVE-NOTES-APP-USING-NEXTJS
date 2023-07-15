@@ -18,7 +18,7 @@ const authOptions={
               const userExists = await Note.findOne({ email });
     
               if (!userExists) {
-                const res = await fetch('https://autosave-notes-app.netlify.app/api/user', {
+                const res = await fetch('/api/user', {
                   method: "POST",
                   headers: {
                     "Content-Type": "application/json",
