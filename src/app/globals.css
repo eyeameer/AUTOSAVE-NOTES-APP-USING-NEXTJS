@@ -13,6 +13,14 @@ button:focus {
   outline: none;
 }
 
+.loading{
+  height:100vh;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
 .ql-editor p,
 .ql-editor.ql-blank::before {
   font-size: 1.3em;

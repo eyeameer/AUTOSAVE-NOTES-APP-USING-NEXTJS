@@ -12,6 +12,7 @@ export default function App() {
     const notes = useSelector(state => state.notes);
     const currentNoteId = useSelector(state => state.currentNoteId);
     const [fetchError, setFetchError]=React.useState(false)
+    const [initialFetch, setInitialFetch]=React.useState(false)
   // Get the dispatch function from the Redux store
   const dispatch = useDispatch();
     let timeoutId = null;
@@ -21,6 +22,9 @@ export default function App() {
             try {
                 const res= await fetch('/api/getNotes')
                 const data=await res.json()
+                if(data){
+                  setInitialFetch(true)
+                }
                 // Dispatch an action to update the notes in the Redux store
                 dispatch({ type: 'SET_NOTES', notes: data });
                 // Dispatch an action to update the currentNoteId in the Redux store
@@ -121,7 +125,8 @@ export default function App() {
     }
     
     return (
-
+<>  {
+        initialFetch?
             <main>
             {
                 notes.length > 0 
@@ -149,7 +154,7 @@ export default function App() {
                 :
                 <div className="no-notes">
                     <h1>You have no notes</h1>
-                   {
+                   {/* {
                     fetchError?
                    <p>(to start creating notes first make sure to connect to <br/>mongoDB
                      at backend and make sure server is running<br/> 
@@ -157,7 +162,7 @@ export default function App() {
                     as the backend server)</p>
                     :
                     ''
-                }
+                } */}
                     <button 
                         className="first-note" 
                         onClick={createNewNote}
@@ -168,6 +173,13 @@ export default function App() {
                 
             }
             </main>
+: 
+<div className="loading">
+just few more seconds...
+</div>
+}
+            </>
+
 
 
     )
