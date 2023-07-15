@@ -10,7 +10,7 @@ export default function Sidebar(props) {
     // Find the current note
     const currentNote = notes.find(note => note.id === currentNoteId) || notes[0];
     // rendering note elements
-    const noteElements = props.notes.map((note, index) => (
+    const noteElements = props.notes?.map((note, index) => (
 
         <div key={note.id}>
             <div
@@ -20,7 +20,7 @@ export default function Sidebar(props) {
                 }`}
                 onClick={() => dispatch({ type: 'SET_CURRENT_NOTE_ID', currentNoteId: note.id })}
             >
-                <h4 className="text-snippet">{note.noteContent.split("\n")[0]}</h4>
+                <h4 className="text-snippet">{note?.noteContent.split("\n")[0]}</h4>
                 <button 
                     className="delete-btn"
                     onClick={(event) => props.deleteNote(event, note.id)}

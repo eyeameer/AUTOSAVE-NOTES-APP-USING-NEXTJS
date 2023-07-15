@@ -4,10 +4,14 @@ export async function POST(req){
     await connectToDatabase()
     try {
         const body=await req.json()
-        const { id, noteContent } = body;
-        const note=await Note.updateOne({id:id},{$set:{noteContent}})
+        const { email,id, noteContent } = body;
+        const note=await Note.updateOne(
+            { email, 'notesArray.id': id },
+            { $set: { 'notesArray.$.noteContent': noteContent } },
+            { new: true }
+        )
         return new Response(JSON.stringify(note),{status:200})
     } catch (error) {
         
     }
-}
+}        

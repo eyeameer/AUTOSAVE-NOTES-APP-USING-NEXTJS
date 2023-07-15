@@ -206,3 +206,29 @@ button:focus {
   top: -7px;
   left: -2px
 } 
+.google-button{
+  display: flex;
+  align-items: center;
+
+  column-gap: 10px;
+ padding-top: 10px;
+
+  padding-bottom:10px;
+  padding-left: 8px;
+  padding-right: 8px;
+  background-color: rgb(75, 75, 207);
+  color: white;
+  border-radius: 50px;
+
+}
+.button-google-div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  
+  
+}
+.google-img-div{
+  
+}
