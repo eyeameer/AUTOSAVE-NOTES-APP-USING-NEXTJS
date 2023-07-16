@@ -1,6 +1,6 @@
 import connectToDatabase from "../../../../lib/utils/connectDb/connectDb"
 import Note from "../../../../lib/utils/model/model"
-import { authOptions } from "../../auth/[...nextauth]/route"
+import { authOptions } from "../auth/[...nextauth]/route"
 import { getServerSession } from "next-auth"
 export async function POST(req){
     const session=await getServerSession(authOptions)
