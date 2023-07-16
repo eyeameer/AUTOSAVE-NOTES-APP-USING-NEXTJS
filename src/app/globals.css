@@ -101,13 +101,15 @@ button:focus {
 
 .text-snippet {
   padding-inline: 5px;
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-weight: 400;
   line-height: 1.2rem;
   color: #4A4E74;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  padding: 6px 2px 8px 2px;
+
 }
 
 .selected-note {
@@ -206,29 +208,3 @@ button:focus {
   top: -7px;
   left: -2px
 } 
-.google-button{
-  display: flex;
-  align-items: center;
-
-  column-gap: 10px;
- padding-top: 10px;
-
-  padding-bottom:10px;
-  padding-left: 8px;
-  padding-right: 8px;
-  background-color: rgb(75, 75, 207);
-  color: white;
-  border-radius: 50px;
-
-}
-.button-google-div{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  
-  
-}
-.google-img-div{
-  
-}

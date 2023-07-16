@@ -137,7 +137,7 @@ export default function App() {
         < > {
           initialFetch?
         
-              <main>
+              <main >
               {
                   notes?.length > 0 
                   ?
@@ -163,7 +163,7 @@ export default function App() {
                   </Split>
                   :
                   <div className="no-notes">
-                      <h1>You have no notes</h1>
+                      <h1 className="font-bold text-3xl">You have no notes</h1>
                      {/* {
                       fetchError?
                      <p>(to start creating notes first make sure to connect to <br/>mongoDB
