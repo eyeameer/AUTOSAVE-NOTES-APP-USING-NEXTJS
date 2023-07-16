@@ -35,6 +35,7 @@ button:focus {
 .sidebar {
   width: 20%;
   height: 100vh;
+  position: relative;
 }
 
 .sidebar--note {

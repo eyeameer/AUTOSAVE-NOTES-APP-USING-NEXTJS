@@ -8,7 +8,7 @@ export default function SignInBtn() {
     <div className="flex gap-3 flex-col justify-center items-center min-h-screen">
       
           <button
-      onClick={() => signIn("google")}
+      onClick={() => signIn("google",{ prompt: 'select_account' })}
       className="flex items-center gap-4 shadow-xl rounded-lg pl-3"
     >
       <Image src="/google-logo.png" height={30} width={30} />

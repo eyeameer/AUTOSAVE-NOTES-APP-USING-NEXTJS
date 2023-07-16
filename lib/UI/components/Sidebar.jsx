@@ -1,6 +1,7 @@
 import React from "react"
 import 'react-mde/lib/styles/css/react-mde-all.css';
 import { useSelector, useDispatch } from 'react-redux';
+import { useSession,getSession, signOut } from "next-auth/react";
 export default function Sidebar(props) {
     // Get the notes and currentNoteId from the Redux store
     const notes = useSelector(state => state.notes);
@@ -38,6 +39,9 @@ export default function Sidebar(props) {
                 <button className="new-note" onClick={props.newNote}>+</button>
             </div >
             {noteElements}
+            <button className="bg-custom-color hover:bg-red-800 text-white px-2 py-2 rounded-full absolute bottom-1 right-2" onClick={()=>signOut()}> 
+                sign out
+            </button>
         </section>
     )
 }

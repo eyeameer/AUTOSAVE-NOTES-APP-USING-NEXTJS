@@ -8,7 +8,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import {nanoid} from "nanoid"
 import Split from "react-split"
 import SignInBtn from "./components/SignInButto";
-import { useSession } from "next-auth/react";
+import { useSession,getSession, signOut } from "next-auth/react";
+
 export default function App() {
      // Get the notes and currentNoteId from the Redux store
     const notes = useSelector(state => state.notes);
@@ -17,13 +18,31 @@ export default function App() {
     const [initialFetch, setInitialFetch]=React.useState(false)
     const {status, data:session}= useSession()
     const email=session?.user?.email
+    const name=session?.user?.name
   // Get the dispatch function from the Redux store
   const dispatch = useDispatch();
     let timeoutId = null;
     React.useEffect(() => { 
-        //fetching notes initially
+      // getSession().then(session => {
+      //   if (!session) {
+      //     // If there's no active session, clear any saved session data
+      //     signOut()
+      //   }
+      // })
+        //fetching notes initiallye
+        if(status==="authenticated"){
         const dataFetch=async()=>{
             try {
+              const res1 = await fetch('/api/user', {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  name,
+                  email,
+                }),
+              });
                 const res= await fetch(`/api/getNotes/${email}`)
                 const data=await res.json()
                 if(res?.error){
@@ -42,8 +61,10 @@ export default function App() {
                 setFetchError(true)
                 console.log(error)
             } 
+          }
+          dataFetch()
         }
-        dataFetch()
+       
 
     }, [session])
     
@@ -133,6 +154,7 @@ export default function App() {
         }) || notes[0]
     }
     if (status==='authenticated'){
+
       return(
         < > {
           initialFetch?
