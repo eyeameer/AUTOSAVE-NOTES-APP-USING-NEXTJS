@@ -1,6 +1,12 @@
 import connectToDatabase from "../../../../lib/utils/connectDb/connectDb"
 import Note from "../../../../lib/utils/model/model"
+import { getServerSession } from "next-auth"
+import { authOptions } from "../auth/[...nextauth]/route"
 export async function DELETE(req){
+    const session=getServerSession(authOptions)
+    if(!session){
+        return new Response(JSON.stringify({message:'You are not Logged In!'}),{status:401})
+    }
     await connectToDatabase()
     try {
         const body=await req.json()

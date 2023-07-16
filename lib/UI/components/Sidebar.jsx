@@ -39,7 +39,7 @@ export default function Sidebar(props) {
                 <button className="new-note" onClick={props.newNote}>+</button>
             </div >
             {noteElements}
-            <button className="bg-custom-color hover:bg-red-800 text-white px-2 py-2 rounded-full absolute bottom-8 right-0 sm:bottom-1 sm:right-2 " onClick={()=>signOut()}> 
+            <button className="bg-custom-color hover:bg-red-800 text-white px-2 py-2 rounded-full absolute bottom-12 right-0 sm:bottom-1 sm:right-2 " onClick={()=>signOut()}> 
                 sign out
             </button>
         </section>
